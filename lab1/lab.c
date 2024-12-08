@@ -5,7 +5,7 @@
 #include <stdlib.h>
 
 #ifndef SIZE
-# define SIZE 8
+# define SIZE 4096
 #endif
 
 #ifndef NR_THREADS
@@ -37,7 +37,7 @@ int main(int argc, char *argv[])
 	init_mtrx(B, SIZE);
 	memset_mtrx(C, SIZE, 0);
 
-	clock_gettime(CLOCK_THREAD_CPUTIME_ID, &first);
+	clock_gettime(CLOCK_MONOTONIC, &first);
 
     int swtch = atoi(argv[1]);
 
@@ -62,7 +62,7 @@ int main(int argc, char *argv[])
         return 1;
 	}
 
-	clock_gettime(CLOCK_THREAD_CPUTIME_ID, &second);
+	clock_gettime(CLOCK_MONOTONIC, &second);
 
 	if (SIZE < 20) {
 		print_mtrx(C, SIZE);

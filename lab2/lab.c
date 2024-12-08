@@ -43,7 +43,7 @@ int main(int argc, char **argv)
 		print_mtrx(mat, SIZE);
 	}
 
-	clock_gettime(CLOCK_THREAD_CPUTIME_ID, &first);
+	clock_gettime(CLOCK_MONOTONIC, &first);
     int swtch = atoi(argv[1]);
 	switch (swtch) {
 	case 1:
@@ -70,7 +70,7 @@ int main(int argc, char **argv)
                "4 - omp\n");
 		return 1;
 	}
-	clock_gettime(CLOCK_THREAD_CPUTIME_ID, &second);
+	clock_gettime(CLOCK_MONOTONIC, &second);
 
 	if (SIZE < 20)
 		validate(orig, mat, SIZE);
